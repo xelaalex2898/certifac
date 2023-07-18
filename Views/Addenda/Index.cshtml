@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Certifac.Models.Addenda>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Addendas</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Nuevo Addenda</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Nombre de addenda
+            </th>
+            @*<th style="display:flex; width:200px;">
+                @Html.DisplayNameFor(model => model.Xml)
+            </th>*@
+            <th>
+                Fecha de Modificacion
+            </th>
+            <th>
+                Usuario
+            </th>
+
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreAddenda)
+                </td>
+                @*<td style="display:flex; width:200px; word-wrap: break-word;">
+                    @Html.DisplayFor(modelItem => item.Xml)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaModificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.IdAddenda">Editar</a> |
+                    <a class="btn btn-success" asp-action="Details" asp-route-id="@item.IdAddenda">Detalles</a> |
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.IdAddenda">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
